@@ -1,0 +1,119 @@
+<head>
+    <meta charset="UTF-8">
+    <!-- import css -->
+    <link rel="stylesheet" href="http://10.191.6.26:8080/viy/css/component.min.css"> 
+<style> 
+
+</style>
+	</head>
+<div id="widget" style="height: 100%;">
+	<vue-adaptive-group size="sm" custom-class="more" li-class="custom" icon-class="vue-icon-edit">
+		<vue-dropdown slot="li1" trigger="click" class="tc-head-menu">
+			<vue-button class="tc-head-item" @click="addWidgetPage">
+				<span class="item-label">新增控件</span>
+				<i class="vue-icon-plus item-mini-icon"></i>
+			</vue-button>
+		</vue-dropdown>
+		<vue-dropdown slot="li2" trigger="hover" class="tc-head-menu" menu-align="start">
+			<vue-button class="tc-head-item">
+				<span class="item-label">视图</span>
+				<i class="vue-icon-view item-mini-icon"></i>
+			</vue-button>
+			<vue-dropdown-menu slot="dropdown">
+				<vue-row class="tc-head-item-content">
+					<vue-radio-group v-model="widgetlistGroupView" @change="doGroupViewWidgetList">
+						<vue-col>
+							<vue-radio-button label="tcGroupName">分组视图</vue-radio-button>
+							</vue-col>
+						<vue-col>
+							<vue-radio-button label="tc_datetime_date">最后更新时间</vue-radio-button>	
+							</vue-col>
+						<vue-col>
+							<vue-radio-button label="widgetCheckType">版本控制视图</vue-radio-button>
+							</vue-col>
+						<vue-col>
+							<vue-radio-button label="widgetsInTable">列表视图</vue-radio-button>
+							</vue-col>
+					</vue-radio-group>
+				</vue-row>
+			</vue-dropdown-menu>
+		</vue-dropdown>
+		<vue-dropdown slot="li3" trigger="hover" class="tc-head-menu" menu-align="start">
+			<vue-button class="tc-head-item">
+				<span class="item-label">筛选</span>
+				<i class="vue-icon-filter-o item-mini-icon"></i>
+			</vue-button>
+			<vue-dropdown-menu slot="dropdown">
+				<vue-row class="tc-head-item-content">
+					<vue-row class="tc-head-item-content-item">
+						<!-- search tag -->
+						<vue-row style="border-bottom:1px solid #C0CCDA">
+							筛选标签
+						</vue-row>
+						<vue-row>
+							<!-- <vue-checkbox :indeterminate="isIndeterminate" v-model="checkAll" @change="handleCheckAllChange">ALL</vue-checkbox> -->
+							<!-- <vue-checkbox-group v-model="checkedTags" @change="handleCheckedTagsChange"> -->
+							<vue-checkbox-group v-model="checkedTags">
+								<vue-checkbox-button v-for="(tag, index) in searchTags" :key="index"  :label="tag">{{tag}}</vue-checkbox-button>
+							</vue-checkbox-group>
+						</vue-row>
+						
+					</vue-row>
+					<!-- ok button -->
+					<vue-row style="text-align: right;">
+						<vue-button @click="doSearch" icon="vue-icon-search">查询</vue-button>
+						<vue-button @click="resetcheckqueryparam" icon="vue-icon-refresh">重置</vue-button>
+					</vue-row>
+				</vue-row>
+			</vue-dropdown-menu>
+		</vue-dropdown>
+		<vue-dropdown slot="li4" trigger="hover" class="tc-head-menu" menu-align="start" @command="handleCommand">
+			<vue-button class="tc-head-item">
+				<span class="item-label">更多</span>
+				<i class="vue-icon-more item-mini-icon"></i>
+			</vue-button>
+			<vue-dropdown-menu slot="dropdown">
+				<vue-dropdown-item command="addWidgetGroupPage" class="tc-head-item-submenu-item">
+					新增分类</vue-dropdown-item>
+				<vue-dropdown-item command="doCompileAll" class="tc-head-item-submenu-item">
+					全部生成</vue-dropdown-item>
+			</vue-dropdown-menu>
+		</vue-dropdown>
+	</vue-adaptive-group>
+</div>
+<!-- import Vue -->
+<script src="http://10.191.6.26:8080/viy/js/vue-all.min.js"></script>
+<!-- import component -->
+<script src="http://10.191.6.26:8080/viy/js/vue-component-all.min.js"></script>
+<script>
+	var widget = new Vue({
+		data: function() {
+			return {
+				searchTags:["jqx","vue"],
+				checkedTags:[],
+				widgetlistGroupView:"tcGroupName"
+			}
+		},
+		methods: {
+			addWidgetPage:function(){
+				console.log("addPage");
+			},
+			doGroupViewWidgetList:function(label){
+				console.log(label);
+			},
+			doSearch:function(){
+				console.log("doSearch");
+			}, 
+			resetcheckqueryparam:function(){
+				this.checkedTags.splice(0,this.checkedTags.length);
+				this.checkedGroups.splice(0,this.checkedGroups.length);
+			},
+			handleCommand:function(command){
+				console.log(command);
+			},
+			addWidgetGroupPage:function(){
+				console.log("addWidgetGroupPage");
+			}
+		}
+	}).$mount('#widget');
+</script>
