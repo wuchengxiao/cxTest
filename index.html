@@ -1,0 +1,95 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>功能模块中心</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Microsoft YaHei', sans-serif;
+        }
+        body {
+            background-color: #f5f5f5;
+            padding: 20px;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .header h1 {
+            color: #333;
+            margin-bottom: 10px;
+        }
+        .modules-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .module-card {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+            cursor: pointer;
+        }
+        .module-card:hover {
+            transform: translateY(-5px);
+        }
+        .module-icon {
+            font-size: 48px;
+            margin-bottom: 15px;
+            color: #1890ff;
+        }
+        .module-title {
+            font-size: 18px;
+            color: #333;
+            font-weight: bold;
+        }
+        .coming-soon {
+            opacity: 0.6;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>功能模块中心</h1>
+        <p>选择您需要的功能开始使用</p>
+    </div>
+
+    <div class="modules-container">
+        <div class="module-card" onclick="location.href='document-reader.html'">
+            <div class="module-icon">📄</div>
+            <div class="module-title">在线文档阅读</div>
+        </div>
+
+        <div class="module-card" onclick="location.href='word-reader.html'">
+            <div class="module-icon">📝</div>
+            <div class="module-title">在线Word阅读</div>
+        </div>
+
+        <div class="module-card" onclick="location.href='pinyin-practice.html'">
+            <div class="module-icon">🔤</div>
+            <div class="module-title">拼音练习</div>
+        </div>
+
+        <div class="module-card" onclick="location.href='json-formatter.html'">
+            <div class="module-icon">{} </div>
+            <div class="module-title">JSON格式化</div>
+        </div>
+
+        <!-- 预留位置给未来扩展的模块 -->
+        <div class="module-card coming-soon">
+            <div class="module-icon">✨</div>
+            <div class="module-title">更多功能即将上线</div>
+        </div>
+    </div>
+</body>
+</html>
